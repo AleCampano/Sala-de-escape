@@ -2,16 +2,16 @@ using Newtonsoft.Json;
 
 public static class Objeto
 {
-    public static string ObjectToString<T>(T? obj) 
+    public static string ListoString<T>(List<T> lista) 
     {
-        return JsonConvert.SerializeObject(obj);
+        return JsonConvert.SerializeObject(lista);
     }
 
-    public static T? StringToObject<T>(string txt)
+    public static List<T>? StringToList<T>(string json)
     {
-        if (string.IsNullOrEmpty(txt))
+        if (string.IsNullOrEmpty(json))
         return default;
         else
-        return JsonConvert.DeserializeObject<T>(txt);
+        return JsonConvert.DeserializeObject<List<T>>(json);
     }
 }

@@ -1,0 +1,22 @@
+<h3>Bienvenido a la sala de escape de McDonald 's en la cual necesitas encontrar un combo Big-Mac con papas grandes, coca común y un McFlurry para llevarlos a Ailu y Ale. Para pasar de una sala a otra deberás tocar el mapa (primero debes encontrarlo)</h3>
+<img scr = "imagenes/MacAbandonado.jpg" alt = "ABANDONADO MAC">
+<img scr = "imagenes/SALA 1.jpg" alt = "mapa sala 1">
+
+@{
+    ViewData["Title"] = "Sala 1";
+}
+
+<h2>Entraste al Mc Abandonado</h2>
+<p>Debés encontrar el mapa escondido en algún rincón del lugar...</p>
+
+<div style="position: relative; display: inline-block;">
+    <img src="~/imagenes/MacAbandonado.jpg" alt="Mac Abandonado" style="width: 800px; height: auto;" />
+
+    <!-- BOTÓN INVISIBLE (oculto sobre imagen) -->
+    <form asp-action="ResolverSala1" method="post"
+          style="position: absolute; top: 100px; left: 150px;">
+        <button type="submit" name="respuesta" value="mapa"
+                style="width: 100px; height: 100px; background: none; border: none; cursor: pointer;">
+        </button>
+    </form>
+</div>

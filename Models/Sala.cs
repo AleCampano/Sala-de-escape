@@ -3,21 +3,11 @@ using Newtonsoft.Json;
 public class Sala
 {
     [JsonProperty]
-    public string nombre{get;set;}
+    public string nombre{get; private set;}
     [JsonProperty]
-    public string Desafio{get;set;}
+    public string Desafio{get; private set;}
     [JsonProperty]
-    public bool Completado{get;set;}
-    [JsonProperty]
-    public string Pista{get;set;}
-
-
-
-    public void inicializarSala() 
-    {
-
-List <Sala> salas = new List<Sala> ();
-
-Sala sala1 = new Sala{nombre = "entrada", Desafio = "¿ Donde esta el mapa?", Completado = false, Pista = "busca por abajo"};
-    }
+    public bool Completado{get; private set;}
+   public List <Sala> colores = new List<Sala>();
+        
 }

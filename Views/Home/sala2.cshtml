@@ -1,0 +1,14 @@
+<img scr = "imagenes/SALA 2.JPG" alt = "ABANDONADO MAC">
+<h3>¡Felicidades! Lograste superar la primera sala. Ahora, que estas en la sala de Electricidad, deberas adivinar el orden correcto de estos 3 colores para poder continuar.</h3>
+
+@foreach(char color in @ViewBag.colores)
+{
+     <p>@ViewBag.colores.color</p>
+}
+
+<form action='@Url.Action("Formulario2", "Home")' method = "POST" enctype="multipart/form-data">
+    <input type="color" name="color1"/>
+    <input type="color" name="color2"/>
+    <input type="color" name="color3"/>
+    <button type="submit">Enviar</button>
+</form>
