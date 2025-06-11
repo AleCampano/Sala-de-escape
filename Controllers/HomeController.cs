@@ -18,10 +18,12 @@ public class HomeController : Controller
     {
         return View();
     }
-    
-
-    public IActionResult Comenzar()
+    public IActionResult Comenzar(bool juegoFinalizado, TimeSpan cronometro)
         {
+            Juego juego = new Juego(juegoFinalizado, cronometro);
+            HttpContext.Session.GetString("juego");
+
+            HttpContext.Session.SetString("juego", Objeto.ObjectToString(juego));
             return View("comenzar");
         }
 
@@ -40,42 +42,50 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Formulario2(string color1, string color2, string color3, List<Sala>colores)
+    public IActionResult Formulario2(string cable1, string cable2, string cable3, string nombre, bool Completado, bool TieneElectricidad)
     {
-        ViewBag.Color1 = color1;
-        ViewBag.Color2 = color2;
-        ViewBag.Color3 = color3;
-        if() // si el clor es igual al de la lista...
+        if(cable1 == "rojo" && cable2 == "azul" && cable3 == "verde")
         {
-
+            Sala hola = new Sala (nombre, Completado, TieneElectricidad);
+            HttpContext.Session.GetString("hola");
+            TieneElectricidad = true;
+            HttpContext.Session.SetString("hola", Objeto.ObjectToString(hola));
+            return View("sala3");
         }
-        return View("sala2");
-    }
-    public IActionResult Sala2(List<Sala>colores)
+        else
         {
-            HttpContext.Session.SetString("colores", Objeto.ListoString(colores));
-            ViewBag.Colores = Objeto.StringToList<Sala>(HttpContext.Session.GetString("colores"));
-
-            string rojo = "rojo";
-            string amarillo = "amarillo";
-            string verde = "verde";
-            colores.Add(rojo);
-            colores.Add(amarillo);
-            colores.Add(verde);
-            
+            Console.WriteLine("NO");
             return View("sala2");
         }
-        
-        
-        
-        
+    }
             public ActionResult Juego()
         {
             ViewBag.MostrarSegundaImagen = false;
             return View("comenzar");
         }
 
-        
+        public IActionResult Formulario3(string password, string answer, string respuesta, string nombre, bool Completado, bool TieneElectricidad)
+        {
+        if(password == "bigmac")
+        {
+            if(answer == "papas")
+            {
+                if(respuesta == "cocacola")
+                {
+                    Sala hola = new Sala (nombre, Completado, TieneElectricidad);
+                    HttpContext.Session.GetString("hola");
+                    Completado = true;
+                    HttpContext.Session.SetString("hola", Objeto.ObjectToString(hola));
+                    return View("sala4");
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("NO");
+            return View("sala3");
+        }
+        }
 
     [HttpPost]
     public ActionResult Juego(int? imgClick_x, int? imgClick_y)
