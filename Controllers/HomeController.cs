@@ -19,37 +19,41 @@ public class HomeController : Controller
         return View();
     }
     public IActionResult Comenzar(bool juegoFinalizado, TimeSpan cronometro)
-        {
+    {
             Juego juego = new Juego(juegoFinalizado, cronometro);
             HttpContext.Session.GetString("juego");
 
             HttpContext.Session.SetString("juego", Objeto.ObjectToString(juego));
             return View("comenzar");
-        }
+    }
 
     public IActionResult Historia()
-        {
+    {
             return View("historia");
-        }
+    }
 
     public IActionResult Creadores()
     {
         return View("creadores");
     }
 
-    public IActionResult Formulario()
-    {
-        return View();
+    public IActionResult Formulario(string name, string nombre, TimeSpan cronometro)
+    {   
+        Jugador nombree = new Jugador (nombre, cronometro);
+            HttpContext.Session.SetString("hola", Objeto.ObjectToString(nombree));
+            nombree.GuardarNombre(name);
+            HttpContext.Session.GetString("hola");
+            return View("Index");
     }
 
-    public IActionResult Formulario2(string cable1, string cable2, string cable3, string nombre, bool Completado, bool TieneElectricidad)
+    public IActionResult Formulario2(string cable1, string cable2, string cable3, string nombre, bool codigo, bool Completado, bool TieneElectricidad)
     {
         if(cable1 == "rojo" && cable2 == "azul" && cable3 == "verde")
         {
-            Sala hola = new Sala (nombre, Completado, TieneElectricidad);
+            Sala cambioE = new Sala (nombre, codigo, Completado, TieneElectricidad);
+            HttpContext.Session.SetString("hola", Objeto.ObjectToString(cambioE));
+            cambioE.Electricidad();
             HttpContext.Session.GetString("hola");
-            TieneElectricidad = true;
-            HttpContext.Session.SetString("hola", Objeto.ObjectToString(hola));
             return View("sala3");
         }
         else
@@ -58,66 +62,83 @@ public class HomeController : Controller
             return View("sala2");
         }
     }
-            public ActionResult Juego()
-        {
+
+    public ActionResult Juego()
+    {
             ViewBag.MostrarSegundaImagen = false;
             return View("comenzar");
-        }
+    }
 
-        public IActionResult Formulario3(string password, string answer, string respuesta, string nombre, bool Completado, bool TieneElectricidad)
-        {
+    public IActionResult Formulario3(string password, string answer, string respuesta, string nombre, bool codigo, bool Completado, bool TieneElectricidad)
+    {
         if(password == "bigmac")
         {
-            if(answer == "papas")
-            {
-                if(respuesta == "cocacola")
-                {
-                    Sala hola = new Sala (nombre, Completado, TieneElectricidad);
-                    HttpContext.Session.GetString("hola");
-                    Completado = true;
-                    HttpContext.Session.SetString("hola", Objeto.ObjectToString(hola));
-                    return View("sala4");
-                }
-            }
+            Sala hola = new Sala (nombre, codigo, Completado, TieneElectricidad);
+            HttpContext.Session.SetString("hola", Objeto.ObjectToString(hola));
+            hola.Cambiar();
+            ViewBag.Completa = Completado;
+            HttpContext.Session.GetString("hola");
+            return View("sala3");
         }
         else
         {
             Console.WriteLine("NO");
             return View("sala3");
         }
-        }
+    }
 
-    [HttpPost]
-    public ActionResult Juego(int? imgClick_x, int? imgClick_y)
+    public IActionResult Formulario4(string password, string answer, string respuesta, string nombre, bool codigo, bool Completado, bool TieneElectricidad)
     {
-        // Supón que la imagen tiene 400x400 px
-        int ancho = 400, alto = 400;
-        bool mostrar = false;
-
-        if (imgClick_x.HasValue && imgClick_y.HasValue)
+        if(password == "papas")
         {
-            // Zona: cuadrante superior izquierdo
-            if (imgClick_x.Value < ancho/2 && imgClick_y.Value < alto/2)
-            {
-                mostrar = true;
-            }
+            Sala hola = new Sala (nombre, codigo, Completado, TieneElectricidad);
+            hola.Falsa();
+            HttpContext.Session.SetString("hola", Objeto.ObjectToString(hola));
+            hola.Cambiar();
+            ViewBag.Hecho = Completado;
+            HttpContext.Session.GetString("hola");
+            return View("sala3");
         }
-
-        ViewBag.MostrarSegundaImagen = mostrar;
-        return View("comenzar");
+        else
+        {
+            Console.WriteLine("NO");
+            return View("sala3");
+        }
     }
 
-    public IActionResult ResolverSala1(string respuesta)
+    public IActionResult Formulario5(string password, string answer, string respuesta, string nombre, bool codigo, bool Completado, bool TieneElectricidad)
     {
-    Jugador jugador = ObtenerJugador();
-
-    if (respuesta != null && respuesta == "mapa")
-    {
-        jugador.PistasEncontradas.Add("Mapa");
-        jugador.SalaActual = "SALA2";
-        GuardarJugador();
-        return RedirectToAction("SALA2");
+        if(password == "cocacola")
+        {
+            Sala hola = new Sala (nombre, codigo, Completado, TieneElectricidad);
+            hola.Falsa();
+            HttpContext.Session.SetString("hola", Objeto.ObjectToString(hola));
+            hola.Cambiar();
+            HttpContext.Session.GetString("hola");
+            return View("sala4");
+        }
+        else
+        {
+            Console.WriteLine("NO");
+            return View("sala3");
+        }
     }
-    return View("comenzar");
+
+    public IActionResult Formulario6(string ingrese, string answer, string respuesta, string nombre, bool codigo, bool Completado, bool TieneElectricidad)
+    {
+        if(ingrese == "hamburguesa al segundo piso")
+        {
+            Sala hola = new Sala (nombre, codigo, Completado, TieneElectricidad);
+            HttpContext.Session.SetString("hola", Objeto.ObjectToString(hola));
+            hola.code();
+            ViewBag.yay = codigo;
+            HttpContext.Session.GetString("hola");
+            return View("sala5");
+        }
+        else
+        {
+            Console.WriteLine("NO");
+            return View("sala4");
+        }
     }
 }

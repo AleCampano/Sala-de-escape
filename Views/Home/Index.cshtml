@@ -10,7 +10,9 @@
     <a href='@Url.Action("Historia","Home")' alt = "Volver a la pag principal"> Ver la historia</a>
     <a href='@Url.Action("Creadores","Home")' alt = "Volver a la pag principal"> Creadores</a>
 
+    <h1>Ingresa tu nombre</h1>
     <form action='@Url.Action("Formulario", "Home")' method = "POST" enctype="multipart/form-data">
     <input type="text" name="nombre"/>
-    <input type ="submit" value="Guardar"/>
+    <input type ="submit" value="Enviar"/>
+</form>
 </div>

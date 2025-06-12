@@ -3,11 +3,11 @@ using Newtonsoft.Json;
 public class Jugador
 {
     [JsonProperty]
-    public string nombre{get;set;}
+    public string nombre{get; private set;}
 
 
     [JsonProperty]
-    public TimeSpan cronometro{get;set;}
+    public TimeSpan cronometro{get; private set;}
 
     public Jugador(string nombre, TimeSpan cronometro)
     {
@@ -15,6 +15,9 @@ public class Jugador
         this.cronometro = cronometro;
     }
 
-
+    public void GuardarNombre(string name)
+    {
+        this.nombre = name;
+    }
     
 }
