@@ -3,7 +3,8 @@ html {
   min-height: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) 
+{
   html {
     font-size: 16px;
   }
@@ -21,19 +22,27 @@ footer {
   background-color: #f8f9fa;
   border-top: 1px solid #e9ecef;
 }
+.index{
+  background-color: gray;
+}
 
 .header1{
-  width: 100%;
-  background-image: "~/imagenes/MacAbandonado.jpg";
-  color: white;
-  font-size: 40%;
+  background-image: url(/imagenes/MacAbandonado.jpg);
+  background-position: center;
+  height: 1000px;
+  background-size: cover;
   text-align: center;
   text-transform:uppercase;
 }
 
 .header1 h3{
+  color: whitesmoke;
   padding: 0.5%;
 }
-.headr img{
-  size: 1%;
+.header1 img{
+  margin-top: 36%;
+  margin-left: 72%;
+ width: 2%;
+ opacity: 7%;
+ height: auto;
 }

@@ -1,12 +1,18 @@
 <img scr = "imagenes/SALA 2.JPG" alt = "ABANDONADO MAC">
 <h3>¡Felicidades! Lograste superar la primera sala. Ahora, que estas en la sala de Electricidad, deberas adivinar el orden correcto de estos 3 colores para poder continuar.</h3>
 
-<h2>VERDE - ROJO - AZUL</h2>
+@{
+    if(@ViewBag.lol == false)
+    {
+        <p>ERROR - TRY AGAIN</p>
+    }
+}
 
+<h2>VERDE - ROJO - AZUL</h2>
 <form action='@Url.Action("Formulario2", "Home")' method = "POST" enctype="multipart/form-data">
-    <input type="color" name="color1"/>
-    <input type="color" name="color2"/>
-    <input type="color" name="color3"/>
+    <input type="text" name="color1"/>
+    <input type="text" name="color2"/>
+    <input type="text" name="color3"/>
     <button type="submit">Enviar</button>
 </form>
 

@@ -12,13 +12,30 @@ public class Sala
 
     [JsonProperty]
     public bool codigo {get; private set;}
+
+    [JsonProperty]
+    public List<string> respuestas {get; private set;}
         
-    public Sala (string nombre, bool Completado, bool TieneElectricidad, bool codigo)
+    public Sala (string nombre, bool Completado, bool TieneElectricidad, bool codigo, List<string> respuestas)
     {
         this.nombre = nombre;
         this.Completado = false;
         this.TieneElectricidad = false;
         this.codigo = false;
+        this.respuestas = new List<string>();
+    }
+
+    public void AgregarLista()
+    {
+        string rojo = "rojo";
+        string azul = "azul";
+        string verde = "verde";
+        string bigmac = "bigmac";
+        string papas = "papas";
+        string cocacola = "cocacola";
+        string hambur = "hamburguesa al segundo piso";
+        string captha1 = "V6T9JBCDS";
+        string captcha2 = "LMTR55D8E";
     }
 
     public void Electricidad ()
@@ -31,7 +48,7 @@ public class Sala
         Completado = true;
     }
 
-    public void Falsa ()
+    public void FalsaT ()
     {
         Completado = false;
     }
@@ -39,5 +56,10 @@ public class Sala
     public void code ()
     {
         codigo = true;
+    }
+
+    public void FalsaS()
+    {
+        codigo = false;
     }
 }

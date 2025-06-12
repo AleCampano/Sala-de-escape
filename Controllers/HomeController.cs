@@ -36,6 +36,10 @@ public class HomeController : Controller
     {
         return View("creadores");
     }
+    public IActionResult Sala2()
+    {
+        return View("sala2");
+    }
 
     public IActionResult Formulario(string name, string nombre, TimeSpan cronometro)
     {   
@@ -46,9 +50,9 @@ public class HomeController : Controller
             return View("Index");
     }
 
-    public IActionResult Formulario2(string cable1, string cable2, string cable3, string nombre, bool codigo, bool Completado, bool TieneElectricidad)
+    public IActionResult Formulario2(string color1, string color2, string color3, string nombre, bool codigo, bool Completado, bool TieneElectricidad)
     {
-        if(cable1 == "rojo" && cable2 == "azul" && cable3 == "verde")
+        if(color1 == "rojo" && color2 == "azul" && color3 == "verde")
         {
             Sala cambioE = new Sala (nombre, codigo, Completado, TieneElectricidad);
             HttpContext.Session.SetString("hola", Objeto.ObjectToString(cambioE));
@@ -58,7 +62,7 @@ public class HomeController : Controller
         }
         else
         {
-            Console.WriteLine("NO");
+            ViewBag.lol = TieneElectricidad;
             return View("sala2");
         }
     }
@@ -69,15 +73,14 @@ public class HomeController : Controller
             return View("comenzar");
     }
 
-    public IActionResult Formulario3(string password, string answer, string respuesta, string nombre, bool codigo, bool Completado, bool TieneElectricidad)
+    public IActionResult Formulario3(string password)
     {
         if(password == "bigmac")
         {
-            Sala hola = new Sala (nombre, codigo, Completado, TieneElectricidad);
-            HttpContext.Session.SetString("hola", Objeto.ObjectToString(hola));
+            Sala hola = HttpContext.Session.SetString("hola", Objeto.ObjectToString(hola));
             hola.Cambiar();
-            ViewBag.Completa = Completado;
             HttpContext.Session.GetString("hola");
+            ViewBag.Completa = Completado;
             return View("sala3");
         }
         else
@@ -92,7 +95,7 @@ public class HomeController : Controller
         if(password == "papas")
         {
             Sala hola = new Sala (nombre, codigo, Completado, TieneElectricidad);
-            hola.Falsa();
+            hola.FalsaT();
             HttpContext.Session.SetString("hola", Objeto.ObjectToString(hola));
             hola.Cambiar();
             ViewBag.Hecho = Completado;
@@ -111,7 +114,7 @@ public class HomeController : Controller
         if(password == "cocacola")
         {
             Sala hola = new Sala (nombre, codigo, Completado, TieneElectricidad);
-            hola.Falsa();
+            hola.FalsaT();
             HttpContext.Session.SetString("hola", Objeto.ObjectToString(hola));
             hola.Cambiar();
             HttpContext.Session.GetString("hola");
@@ -139,6 +142,43 @@ public class HomeController : Controller
         {
             Console.WriteLine("NO");
             return View("sala4");
+        }
+    }
+
+    public IActionResult Formulario7(string ingrese, string answer, string respuesta, string nombre, bool codigo, bool Completado, bool TieneElectricidad)
+    {
+        if(ingrese == "V6T9JBCDS")
+        {
+            Sala hola = new Sala (nombre, codigo, Completado, TieneElectricidad);
+            hola.FalsaS();
+            HttpContext.Session.SetString("hola", Objeto.ObjectToString(hola));
+            hola.code();
+            ViewBag.hey = codigo;
+            HttpContext.Session.GetString("hola");
+            return View("sala5");
+        }
+        else
+        {
+            Console.WriteLine("NO");
+            return View("sala5");
+        }
+    }
+
+    public IActionResult Formulario8(string ingrese, string answer, string respuesta, string nombre, bool codigo, bool Completado, bool TieneElectricidad)
+    {
+        if(ingrese == "LMTR55D8E")
+        {
+            Sala hola = new Sala (nombre, codigo, Completado, TieneElectricidad);
+            hola.FalsaS();
+            HttpContext.Session.SetString("hola", Objeto.ObjectToString(hola));
+            hola.code();
+            HttpContext.Session.GetString("hola");
+            return View("sala6");
+        }
+        else
+        {
+            Console.WriteLine("NO");
+            return View("sala5");
         }
     }
 }

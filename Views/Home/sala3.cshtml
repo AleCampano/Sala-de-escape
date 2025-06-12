@@ -1,52 +1,43 @@
 <h3>¡Felicidades! Lograste superar la segunda sala y desbloqueaste la Coca-Cola. Ahora, que estas en la Cocina, deberas responder estas adivinanzas para poder continuar.</h3>
 
-<h4>Pan arriba, pan abajo,
- y en el medio va el trabajo:
- dos carnes, queso y lechuga,
- con una salsa que no se fuga.
- ¿Qué soy yo, rey del cartel?
- ¡Vengo en combo y saben quién!
- 👉 ¿Qué es? </h4>
+<h4>Pan arriba, pan abajo,</h4>
+ <h4>dos carnes, queso y lechuga,</h4>
+ <h4>con una salsa que no se fuga.</h4>
+ <h4>¿Qué soy yo, rey del cartel?</h4>
+ <h4>¡Vengo en combo y saben quién!</h4>
+ <h4>👉 ¿Qué es? </h4>
 <form action='@Url.Action("Formulario3", "Home")' method = "POST" enctype="multipart/form-data">
 Respuesta: <input type = "text" name="password" placeholder="Enter password"/><br/>
 <button type="submit">Enviar</button>
 </form>
 
+@{
 if(@ViewBag.Completa == true)
 {
-    <h4>Crujen en la oscuridad,
- como pasos de alguien que ya no está.
- Doradas como el oro maldito,
- y saladas por un rito infinito.
- Las dejaron en el teclado, tiesas,
- esperando bocas... o piezas.
- 👉 ¿Qué son?</h4>
+    <h4>Crujen en la oscuridad,</h4>
+ <h4>como pasos de alguien que ya no está.</h4>
+ <h4>Doradas como el oro maldito,</h4>
+ <h4>y saladas por un rito infinito.</h4>
+ <h4>Las dejaron en el teclado, tiesas,</h4>
+ <h4>esperando bocas... o piezas.</h4>
+ <h4>👉 ¿Qué son?</h4>
  <form action='@Url.Action("Formulario4", "Home")' method = "POST" enctype="multipart/form-data">
  Respuesta: <input type = "text" name="password" placeholder="Enter password"/><br/>
 <button type="submit">Enviar</button>
 </form>
 }
-else
-{
-    <h4>ERROR LOSER</h4>
-}
-
 if(@ViewBag.Hecho == true)
 {
-    <h4>En una copa de plástico oscuro,
- burbujeo como un hechizo maduro.
- Mi gas puede darte poder,
- pero si me agitas, vas a correr.
- No soy café, aunque parezco igual,
- pero me sirven con hielo, en ritual.
- 👉 ¿Qué soy?</h4>
+    <h4>En una copa de plástico oscuro,</h4>
+  <h4>burbujeo como un hechizo maduro.</h4>
+  <h4>Mi gas puede darte poder,</h4>
+  <h4>pero si me agitas, vas a correr.</h4>
+  <h4>No soy café, aunque parezco igual,</h4>
+  <h4>pero me sirven con hielo, en ritual.</h4>
+  <h4>👉 ¿Qué soy?</h4>
     <form action='@Url.Action("Formulario5", "Home")' method = "POST" enctype="multipart/form-data">
     Respuesta: <input type = "text" name="respuesta" placeholder="Enter password"/><br/>
     <button type="submit">Enviar</button>
     </form>
 }
-else
-{
-    <h4>ERROR LOSER</h4>
 }
-
