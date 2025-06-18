@@ -50,21 +50,21 @@ public class HomeController : Controller
             return View("Index");
     }
 
-    public IActionResult Formulario2(string color1, string color2, string color3, string nombre, bool codigo, bool Completado, bool TieneElectricidad)
+    public IActionResult Formulario2(string color1, string color2, string color3)
     {
-        if(color1 == "rojo" && color2 == "azul" && color3 == "verde")
+        Sala sala=Objeto.StringToObject<Sala>(HttpContext.Session.GetString("hola"));
+        string palabra = "";
+        if(color1 == sala.respuestas[0] && color2 == sala.respuestas[1] && color3 == sala.respuestas[2])
         {
-            Sala cambioE = new Sala (nombre, codigo, Completado, TieneElectricidad);
-            HttpContext.Session.SetString("hola", Objeto.ObjectToString(cambioE));
-            cambioE.Electricidad();
-            HttpContext.Session.GetString("hola");
-            return View("sala3");
+            sala.Electricidad();
+            palabra = "sala3";
         }
         else
         {
-            ViewBag.lol = TieneElectricidad;
-            return View("sala2");
+            palabra="sala2";
         }
+        HttpContext.Session.SetString("hola",Objeto.ObjectToString(sala));
+        return View(palabra);
     }
 
     public ActionResult Juego()
@@ -75,22 +75,36 @@ public class HomeController : Controller
 
     public IActionResult Formulario3(string password)
     {
-        if(password == "bigmac")
+        Sala sala = Objeto.StringToObject<Sala>(HttpContext.Session.GetString("hola"));
+        if(password == sala.respuestas[3])
         {
-            Sala hola = HttpContext.Session.SetString("hola", Objeto.ObjectToString(hola));
-            hola.Cambiar();
-            HttpContext.Session.GetString("hola");
-            ViewBag.Completa = Completado;
+            sala.Cambiar();
+            ViewBag.Completa = sala.Completado;
             return View("sala3");
+
+            if(password == sala.respuestas[4])
+            {
+                sala.FalsaT();
+                sala.Cambiar();
+                ViewBag.Completa = sala.Completado;
+
+                if(password == sala.respuestas[5])
+                {
+                    sala.FalsaT();
+                    sala.Cambiar();
+                    ViewBag.Completa = sala.Completado;
+                    return View("sala4");
+                }
+            }
         }
         else
         {
-            Console.WriteLine("NO");
             return View("sala3");
         }
+        HttpContext.Session.SetString("hola",Objeto.ObjectToString(sala));
     }
 
-    public IActionResult Formulario4(string password, string answer, string respuesta, string nombre, bool codigo, bool Completado, bool TieneElectricidad)
+    public IActionResult Formulario4()
     {
         if(password == "papas")
         {
@@ -109,7 +123,7 @@ public class HomeController : Controller
         }
     }
 
-    public IActionResult Formulario5(string password, string answer, string respuesta, string nombre, bool codigo, bool Completado, bool TieneElectricidad)
+    public IActionResult Formulario5()
     {
         if(password == "cocacola")
         {
@@ -127,7 +141,7 @@ public class HomeController : Controller
         }
     }
 
-    public IActionResult Formulario6(string ingrese, string answer, string respuesta, string nombre, bool codigo, bool Completado, bool TieneElectricidad)
+    public IActionResult Formulario6()
     {
         if(ingrese == "hamburguesa al segundo piso")
         {

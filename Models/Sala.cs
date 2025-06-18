@@ -34,8 +34,17 @@ public class Sala
         string papas = "papas";
         string cocacola = "cocacola";
         string hambur = "hamburguesa al segundo piso";
-        string captha1 = "V6T9JBCDS";
+        string captcha1 = "V6T9JBCDS";
         string captcha2 = "LMTR55D8E";
+        respuestas.Add(rojo);
+        respuestas.Add(azul);
+        respuestas.Add(verde);
+        respuestas.Add(bigmac);
+        respuestas.Add(papas);
+        respuestas.Add(cocacola);
+        respuestas.Add(hambur);
+        respuestas.Add(captcha1);
+        respuestas.Add(captcha2);
     }
 
     public void Electricidad ()
