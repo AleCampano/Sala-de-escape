@@ -1,6 +1,8 @@
 <section class="sala3">
 <h3>¡Felicidades! Lograste superar la segunda sala y desbloqueaste la Coca-Cola. Ahora, que estas en la Cocina, deberas responder estas adivinanzas para poder continuar.</h3>
 
+@{if(@ViewBag.hol == true)
+{
 <h4>Pan arriba, pan abajo,</h4>
  <h4>dos carnes, queso y lechuga,</h4>
  <h4>con una salsa que no se fuga.</h4>
@@ -8,12 +10,13 @@
  <h4>¡Vengo en combo y saben quién!</h4>
  <h4>👉 ¿Qué es? </h4>
 <form action='@Url.Action("Formulario3", "Home")' method = "POST" enctype="multipart/form-data">
-Respuesta: <input type = "text" name="password" placeholder="Enter password"/><br/>
+Respuesta: <input type = "text" name="password" placeholder="Enter password" autocomplete= "off" /><br/>
 <button type="submit">Enviar</button>
 </form>
+}
+}
 
-@{
-if(@ViewBag.Completa == true)
+@{if(@ViewBag.Completa == true)
 {
     <h4>Crujen en la oscuridad,</h4>
  <h4>como pasos de alguien que ya no está.</h4>
@@ -23,11 +26,13 @@ if(@ViewBag.Completa == true)
  <h4>esperando bocas... o piezas.</h4>
  <h4>👉 ¿Qué son?</h4>
  <form action='@Url.Action("Formulario4", "Home")' method = "POST" enctype="multipart/form-data">
- Respuesta: <input type = "text" name="password" placeholder="Enter password"/><br/>
+ Respuesta: <input type = "text" name="password" placeholder="Enter password" autocomplete= "off" /><br/>
 <button type="submit">Enviar</button>
 </form>
 }
-if(@ViewBag.Hecho == true)
+}
+
+@{if(@ViewBag.Hecho == true)
 {
     <h4>En una copa de plástico oscuro,</h4>
   <h4>burbujeo como un hechizo maduro.</h4>
@@ -37,7 +42,7 @@ if(@ViewBag.Hecho == true)
   <h4>pero me sirven con hielo, en ritual.</h4>
   <h4>👉 ¿Qué soy?</h4>
     <form action='@Url.Action("Formulario5", "Home")' method = "POST" enctype="multipart/form-data">
-    Respuesta: <input type = "text" name="password" placeholder="Enter password"/><br/>
+    Respuesta: <input type = "text" name="password" placeholder="Enter password" autocomplete= "off" /><br/>
     <button type="submit">Enviar</button>
     </form>
 }

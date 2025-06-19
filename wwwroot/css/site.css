@@ -12,8 +12,10 @@ html {
 }
 
 body {
-  margin: 10px;
-  padding: 10px;
+  margin: 1px;
+  padding: 1px;
+  height: 1px;
+
 }
 
 
@@ -22,32 +24,49 @@ footer {
   padding: 10px;
   background-color: #f8f9fa;
   border-top: 1px solid #e9ecef;
+  clear: both;
 }
 .index{
 height: 1000px;
 width: 100%;
-  background-image: url(/imagenes/aaa.png);
-  background-position: center;
-  background-size: 100%;
+background-image: url(/imagenes/Index.jpg);
+background-position: center;
+background-size: cover;
+border-style: none;
 }
 
-.index a
+.index div a
 {
+
+  color: rgb(228, 38, 38);
   font-size: xx-large;
   border: rgb(255, 255, 255);
   border-radius: 2px 2px 2px 2px;
+  margin-left: 16%;
+  margin-right: 4%;
 } 
 
 .index h1
 {
   font-size: x-large;
   color: white;
+  text-align: center;
+}
+
+.index form{
+  background: none;
+  border-radius: 15px;
+  width: 13%;
+  padding: 0.3%;
+  margin-top: 2%;
+  margin-left: 3%;
 }
 
 .index p
 {
   font-size: x-large;
   color: white;
+  text-align: center;
 }
 
 .comenzar{
@@ -71,14 +90,42 @@ width: 100%;
  height: auto;
 }
 
-.creadores
+.creadores h2
 {
+  text-align: center;
+  text-decoration: underline;
+}
 
+.creadores div{
+  border: #000000;
+  width: 80%;
+  height: auto;
+}
+
+.creadores a {
+  clear: both;
+  text-decoration: underline;
 }
 
 .historia
 {
+  background-image: url(/imagenes/hidtoria.jpg);
+  height: 1000px;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+}
 
+.historia p
+{
+margin-left: 1%;
+margin-right: 1%;
+  color: white;
+  font-size: xx-large;
+}
+
+.historia h4{
+  color: rgb(245, 8, 8);
 }
 .sala2
 {

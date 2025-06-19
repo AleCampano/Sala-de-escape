@@ -10,6 +10,7 @@ public class Jugador
 
 // Constructor requerido por JsonConvert
     public Jugador() { }
+    
     public Jugador(string nombre, TimeSpan cronometro)
     {
         this.nombre = nombre;
