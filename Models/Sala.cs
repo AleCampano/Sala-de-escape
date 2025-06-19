@@ -49,7 +49,7 @@ public class Sala
 
     public void Electricidad ()
     {
-            TieneElectricidad = true;
+        TieneElectricidad = true;
     }
 
     public void Cambiar ()

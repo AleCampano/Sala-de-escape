@@ -1,3 +1,4 @@
+
 html {
   font-size: 14px;
   min-height: 100%;
@@ -23,7 +24,30 @@ footer {
   border-top: 1px solid #e9ecef;
 }
 .index{
-  background-color: gray;
+height: 1000px;
+width: 100%;
+  background-image: url(/imagenes/aaa.png);
+  background-position: center;
+  background-size: 100%;
+}
+
+.index a
+{
+  font-size: xx-large;
+  border: rgb(255, 255, 255);
+  border-radius: 2px 2px 2px 2px;
+} 
+
+.index h1
+{
+  font-size: x-large;
+  color: white;
+}
+
+.index p
+{
+  font-size: x-large;
+  color: white;
 }
 
 .comenzar{
@@ -52,24 +76,30 @@ footer {
 
 }
 
-.historia{
+.historia
+{
 
 }
-.sala2{
-
-}
-
-.sala3{
-
-}
-.sala4{
+.sala2
+{
 
 }
 
-.sala5{
+.sala3
+{
+
+}
+.sala4
+{
 
 }
 
-.sala6{
+.sala5
+{
+
+}
+
+.sala6
+{
   
 }
