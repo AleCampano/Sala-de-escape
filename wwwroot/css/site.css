@@ -25,6 +25,7 @@ footer {
   background-color: #f8f9fa;
   border-top: 1px solid #e9ecef;
   clear: both;
+  
 }
 .index{
 height: 1000px;
@@ -42,31 +43,33 @@ border-style: none;
   font-size: xx-large;
   border: rgb(255, 255, 255);
   border-radius: 2px 2px 2px 2px;
-  margin-left: 16%;
+  margin-left: 15%;
   margin-right: 4%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 } 
 
 .index h1
 {
   font-size: x-large;
   color: white;
-  text-align: center;
+  margin-left: 41%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .index form{
   background: none;
   border-radius: 15px;
   width: 13%;
-  padding: 0.3%;
   margin-top: 2%;
-  margin-left: 3%;
+  margin-left: 41%;
+ 
 }
-
 .index p
 {
   font-size: x-large;
   color: white;
   text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .comenzar{
@@ -81,30 +84,49 @@ border-style: none;
 .comenzar h3{
   color: whitesmoke;
   padding: 0.5%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .comenzar img{
   margin-top: 36%;
-  margin-left: 72%;
- width: 2%;
- opacity: 7%;
- height: auto;
+  opacity: 5%;
+  width: 2%;
+  float: right;
+  height: auto;
 }
 
+.creadores{
+  background-color: #000000;
+}
 .creadores h2
 {
+  color: #e9ecef;
   text-align: center;
   text-decoration: underline;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.creadores h3{
+  color: #e9ecef;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ailu img{
+  height: 400px;
 }
 
 .creadores div{
   border: #000000;
-  width: 80%;
   height: auto;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .creadores a {
   clear: both;
   text-decoration: underline;
+  background-color: white ;
+  border-radius: 3px 3px 3px 3px;
+  padding: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .historia
@@ -122,20 +144,84 @@ margin-left: 1%;
 margin-right: 1%;
   color: white;
   font-size: xx-large;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .historia h4{
   color: rgb(245, 8, 8);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .sala2
 {
+  background-image: url(/imagenes/CajaElectricaSala2.jpg);
+  height: 1000px;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  padding-left: 1%;
+}
 
+.sala2 h3{
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.verde{
+  color: #59f03b;
+  float: left;
+  margin: 0.5%;
+  margin-right: 1.5%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.rojo{
+  float: left;
+  color: #f12323;
+  margin: 0.5%;
+  margin-right: 1.5%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.azul{
+  color: rgb(49, 49, 241);
+  float: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0.5%;
+}
+
+.sala2 form{
+  clear: both;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .sala3
 {
-
+  background-image:  url(/imagenes/CocinaSala3.jpg);
+  height: 1000px;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  padding-left: 1%;
 }
+
+.sala3 h3{
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sala3 div{
+  background-color : rgba(100, 100, 100, 0.5);
+  width: 20%;
+}
+
+.sala3 div h4{
+  color: yellow;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sala3 div form {
+  color: rgb(255, 255, 255);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .sala4
 {
 

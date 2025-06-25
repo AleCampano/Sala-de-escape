@@ -1,21 +1,24 @@
 <section class="sala3">
 <h3>¡Felicidades! Lograste superar la segunda sala y desbloqueaste la Coca-Cola. Ahora, que estas en la Cocina, deberas responder estas adivinanzas para poder continuar.</h3>
 
+<div>
 @{if(@ViewBag.hol == true)
 {
 <h4>Pan arriba, pan abajo,</h4>
- <h4>dos carnes, queso y lechuga,</h4>
- <h4>con una salsa que no se fuga.</h4>
- <h4>¿Qué soy yo, rey del cartel?</h4>
- <h4>¡Vengo en combo y saben quién!</h4>
- <h4>👉 ¿Qué es? </h4>
+<h4>dos carnes, queso y lechuga,</h4>
+<h4>con una salsa que no se fuga.</h4>
+<h4>¿Qué soy yo, rey del cartel?</h4>
+<h4>¡Vengo en combo y saben quién!</h4>
+<h4>👉 ¿Qué es? </h4>
 <form action='@Url.Action("Formulario3", "Home")' method = "POST" enctype="multipart/form-data">
 Respuesta: <input type = "text" name="password" placeholder="Enter password" autocomplete= "off" /><br/>
 <button type="submit">Enviar</button>
 </form>
 }
 }
+</div>
 
+<div>
 @{if(@ViewBag.Completa == true)
 {
     <h4>Crujen en la oscuridad,</h4>
@@ -31,7 +34,9 @@ Respuesta: <input type = "text" name="password" placeholder="Enter password" aut
 </form>
 }
 }
+</div>
 
+<div>
 @{if(@ViewBag.Hecho == true)
 {
     <h4>En una copa de plástico oscuro,</h4>
@@ -47,4 +52,5 @@ Respuesta: <input type = "text" name="password" placeholder="Enter password" aut
     </form>
 }
 }
+</div>
 </section>

@@ -1,5 +1,4 @@
 <section class="sala2">
-<img scr = "imagenes/SALA 2.JPG" alt = "ABANDONADO MAC">
 <h3>¡Felicidades! Lograste superar la primera sala. Ahora, que estas en la sala de Electricidad, deberas adivinar el orden correcto de estos 3 colores para poder continuar.</h3>
 
 @{
@@ -9,11 +8,22 @@
     }
 }
 
-<h2>VERDE - ROJO - AZUL</h2>
-<form action='@Url.Action("Formulario2", "Home")' method = "POST" enctype="multipart/form-data">
-    <input type="text" name="color1"/>
-    <input type="text" name="color2"/>
-    <input type="text" name="color3"/>
+<div class="verde">
+<h2>VERDE</h2>
+</div>
+
+<div class="rojo">
+<h2>ROJO</h2>
+</div>
+
+<div class="azul">
+<h2>AZUL</h2>
+</div>
+
+<form action='@Url.Action("Formulario2", "Home")' method = "POST" enctype="multipart/form-data" >
+    <input type="text" name="color1" autocomplete= "off"/>
+    <input type="text" name="color2" autocomplete= "off"/>
+    <input type="text" name="color3" autocomplete= "off"/>
     <button type="submit">Enviar</button>
 </form>
 </section>
