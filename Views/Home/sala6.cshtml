@@ -1,6 +1,13 @@
+@using TP05_SalaDeEscape.Models;
+@{
+    Juego juego = Objeto.StringToObject<Juego>(Context.Session.GetString("hola"));
+    TimeSpan tiempoTotal = juego.cronometro;
+}
 <section class="sala6">
 <h4>¡¡¡¡¡¡FELICIDADES!!!!!! Desbloqueaste las papas lo que significa que...</h4>
 <h1>LO LOGRASTEEEEE - ALE Y AILU CONSIGUIERON TODO LO QUE QUERIAN</h1>
 
-<img scr = "~/imagenes/feliz.png" alt = "feliz">
+<div class="cronometro-final">
+    <h2>Tiempo total de juego: @tiempoTotal.ToString(@"hh\:mm\:ss")</h2>
+</div>
 </section>

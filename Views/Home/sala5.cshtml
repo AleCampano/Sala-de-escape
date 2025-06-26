@@ -1,31 +1,25 @@
 <section class="sala5">
 <h3>¡Felicidades! Lograste superar la cuarta sala y desbloqueaste el MCFlurry. Ahora, que estas en la ULTIMA SALA, deberas desifrar estos CAPTCHAS.</h3>
-
-@{
-if(@ViewBag.si == true)
-{
+<h1>UTILIZA SIEMPRE LAS MAYUSCULAS</h1>
 <h4>CAPTCHA N°1:</h4>
-<img scr = "~/imagenes/captcha1.png" alt = "captcha 1">
+<img src = "~/imagenes/captcha.png" alt = "PC">
 <p>INGRESE:</p>
 <form action='@Url.Action("Formulario7", "Home")' method = "POST" enctype="multipart/form-data">
-Respuesta: <input type = "text" name="password" placeholder="Enter password"/><br/>
+<a> Respuesta:</a>
+<input type = "text" name="password" placeholder="Enter password"/><br/>
 <button type="submit">Enviar</button>
 </form>
-}
-}
 
 @{if(ViewBag.hey == true)
 {
     <h4>CAPTCHA N°2:</h4>
-<img scr = "~/imagenes/captcha2.png" alt = "captcha 2">
-<p>INGRESE:</p>
-<form action='@Url.Action("Formulario8", "Home")' method = "POST" enctype="multipart/form-data">
-Respuesta: <input type = "text" name="password" placeholder="Enter password"/><br/>
-<button type="submit">Enviar</button>
-</form>
-}
-else{
-    <h4>LOOOOOSER, MAL</h4>
+    <img src = "~/imagenes/captcha2 (2).png" alt = "captcha 2">
+    <p>INGRESE:</p>
+    <form action='@Url.Action("Formulario8", "Home")' method = "POST" enctype="multipart/form-data">
+    <a>Respuesta:</a>
+    <input type = "text" name="password" placeholder="Enter password"/><br/>
+    <button type="submit">Enviar</button>
+    </form>
 }
 }
 </section>
