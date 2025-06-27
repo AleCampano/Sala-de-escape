@@ -44,7 +44,7 @@ public class HomeController : Controller
         Jugador jugador = Objeto.StringToObject<Jugador>(HttpContext.Session.GetString("hola"));   
         jugador.GuardarNombre(nombre);
         HttpContext.Session.SetString("hola",Objeto.ObjectToString(jugador));
-        return View("Index");
+        return View("IndexA");
     }
 
     public IActionResult Formulario2(string color1, string color2, string color3)

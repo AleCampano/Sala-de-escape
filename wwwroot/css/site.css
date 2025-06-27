@@ -27,7 +27,7 @@ footer {
   clear: both;
   
 }
-.index{
+.indexA{
 height: 1000px;
 width: 100%;
 background-image: url(/imagenes/Index.jpg);
@@ -38,7 +38,7 @@ justify-content: center;
 align-items: center;
 }
 
-.index div{
+.indexA div{
   background-color: rgba(109, 102, 102, 0.6); /* fondo semitransparente */
   padding: 30px;
   text-align: center;
@@ -47,7 +47,18 @@ align-items: center;
   max-width: 500px;
 }
 
-.index div a
+.index{
+  height: 1000px;
+width: 100%;
+background-image: url(/imagenes/Index.jpg);
+background-position: center;
+background-size: cover;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.indexA div a
 {
   display: block;
   color: rgb(228, 38, 38);
@@ -59,9 +70,10 @@ align-items: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 } 
 
-.index h1
+.index div h1
 {
   font-size: x-large;
+  margin-left: 28%;
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -74,7 +86,7 @@ align-items: center;
   margin-left: 31.5%;
 }
 
-.index input[type="text"] {
+.indexA input[type="text"] {
   padding: 8px;
   border-radius: 5px;
   border: none;
@@ -82,7 +94,7 @@ align-items: center;
   margin-bottom: 10px;
 }
 
-.index input[type="submit"] {
+.indexA input[type="submit"] {
   background-color: #e9e61e;
   color: white;
   padding: 10px 20px;
@@ -94,12 +106,21 @@ align-items: center;
   margin-right: 10%;
 }
 
-.index input[type="submit"]:hover {
+.indexA input[type="submit"]:hover {
   background-color: #e2e182;
   transform: scale(1.05);
 }
 
 .index p
+{
+  font-size: x-large;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.indexA p
 {
   font-size: x-large;
   color: white;
