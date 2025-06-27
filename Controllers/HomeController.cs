@@ -18,9 +18,14 @@ public class HomeController : Controller
     {
         return View();
     }
-    public IActionResult Comenzar(bool juegoFinalizado, TimeSpan cronometro, string nombre, bool Completado, bool TieneElectricidad, bool codigo, List<string> respuestas, DateTime tiempoInicio)
+
+     public IActionResult IndexA()
     {
-            Juego juego = new Juego(juegoFinalizado, cronometro, nombre, Completado, TieneElectricidad, codigo, respuestas, tiempoInicio);
+        return View("IndexA");
+    }
+    public IActionResult Comenzar(bool juegoFinalizado, string nombre, bool Completado, bool TieneElectricidad, bool codigo, List<string> respuestas)
+    {
+            Juego juego = new Juego(juegoFinalizado, nombre, Completado, TieneElectricidad, codigo, respuestas);
             HttpContext.Session.SetString("hola", Objeto.ObjectToString(juego));
             return View("comenzar");
     }
@@ -41,7 +46,11 @@ public class HomeController : Controller
 
     public IActionResult Formulario(string nombre)
     {   
-        Jugador jugador = Objeto.StringToObject<Jugador>(HttpContext.Session.GetString("hola"));   
+        Jugador jugador = Objeto.StringToObject<Jugador>(HttpContext.Session.GetString("hola"));
+        if (jugador == null)
+        {
+            jugador = new Jugador(); // Crea una nueva instancia si no existe
+        }
         jugador.GuardarNombre(nombre);
         HttpContext.Session.SetString("hola",Objeto.ObjectToString(jugador));
         return View("IndexA");
@@ -172,7 +181,6 @@ public class HomeController : Controller
         {
             juego.FalsaS();
             juego.code();
-            juego.CalcularTiempoTotal();
             HttpContext.Session.SetString("hola", Objeto.ObjectToString(juego));
             return View("sala6");
         }

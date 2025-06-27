@@ -5,8 +5,6 @@ public class Juego
     [JsonProperty]
     public bool juegoFinalizado {get; private set;}
     [JsonProperty]
-    public TimeSpan cronometro {get; private set;}
-    [JsonProperty]
     public string nombre{get; private set;}
     [JsonProperty]
     public bool Completado{get; private set;}
@@ -16,19 +14,15 @@ public class Juego
     public bool codigo {get; private set;}
     [JsonProperty]
     public List<string> respuestas {get; private set;}
-    [JsonProperty]
-    public DateTime tiempoInicio { get; private set; }
 
-    public Juego (bool juegoFinalizado, TimeSpan cronometro, string nombre, bool Completado, bool TieneElectricidad, bool codigo, List<string> respuestas, DateTime tiempoInicio)
+    public Juego (bool juegoFinalizado, string nombre, bool Completado, bool TieneElectricidad, bool codigo, List<string> respuestas)
     {
-        this.cronometro = TimeSpan.Zero;
         this.juegoFinalizado = false;
         this.nombre = nombre;
         this.Completado = false;
         this.TieneElectricidad = false;
         this.codigo = false;
         this.respuestas = new List<string>();
-        this.tiempoInicio = DateTime.Now;
     }
 
     public void AgregarLista()
@@ -76,11 +70,6 @@ public class Juego
     public void FalsaS()
     {
         codigo = false;
-    }
-
-       public void CalcularTiempoTotal()
-    {
-        this.cronometro = DateTime.Now  - this.tiempoInicio;
     }
 }
  
