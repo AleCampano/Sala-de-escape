@@ -22,31 +22,19 @@ public class Juego
         this.Completado = false;
         this.TieneElectricidad = false;
         this.codigo = false;
-        this.respuestas = new List<string>();
+        this.respuestas = new List<string>
+        {
+            "rojo",
+            "azul",
+            "verde",
+            "bigmac",
+            "papas",
+            "cocacola",
+            "hamburguesa al segundo piso",
+            "V6T9JBCDS",
+            "LMTR55D8E"
+        };
     }
-
-    public void AgregarLista()
-    {
-        string rojo = "rojo";
-        string azul = "azul";
-        string verde = "verde";
-        string bigmac = "bigmac";
-        string papas = "papas";
-        string cocacola = "cocacola";
-        string hambur = "hamburguesa al segundo piso";
-        string captcha1 = "V6T9JBCDS";
-        string captcha2 = "LMTR55D8E";
-        respuestas.Add(rojo);
-        respuestas.Add(azul);
-        respuestas.Add(verde);
-        respuestas.Add(bigmac);
-        respuestas.Add(papas);
-        respuestas.Add(cocacola);
-        respuestas.Add(hambur);
-        respuestas.Add(captcha1);
-        respuestas.Add(captcha2);
-    }
-
     public void Electricidad ()
     {
         TieneElectricidad = true;
@@ -70,6 +58,16 @@ public class Juego
     public void FalsaS()
     {
         codigo = false;
+    }
+    public bool validar(string color1, string color2, string color3)
+    {
+        bool pasoSala = false;
+        if(color1 == respuestas[0] && color2 == respuestas[1] && color3 == respuestas[2])
+        {
+            pasoSala=true;
+            Electricidad();
+        }
+        return pasoSala;
     }
 }
  

@@ -26,7 +26,7 @@ public class HomeController : Controller
     public IActionResult Comenzar(bool juegoFinalizado, string nombre, bool Completado, bool TieneElectricidad, bool codigo, List<string> respuestas)
     {
             Juego juego = new Juego(juegoFinalizado, nombre, Completado, TieneElectricidad, codigo, respuestas);
-            HttpContext.Session.SetString("hola", Objeto.ObjectToString(juego));
+            HttpContext.Session.SetString("juego", Objeto.ObjectToString(juego));
             return View("comenzar");
     }
 
@@ -46,33 +46,45 @@ public class HomeController : Controller
 
     public IActionResult Formulario(string nombre)
     {   
-        Jugador jugador = Objeto.StringToObject<Jugador>(HttpContext.Session.GetString("hola"));
+        Jugador jugador = Objeto.StringToObject<Jugador>(HttpContext.Session.GetString("juego"));
         if (jugador == null)
         {
-            jugador = new Jugador(); // Crea una nueva instancia si no existe
+            jugador = new Jugador();
         }
         jugador.GuardarNombre(nombre);
-        HttpContext.Session.SetString("hola",Objeto.ObjectToString(jugador));
+        HttpContext.Session.SetString("juego",Objeto.ObjectToString(jugador));
         return View("IndexA");
     }
 
     public IActionResult Formulario2(string color1, string color2, string color3)
     {
-        Juego juego = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("hola"));
-        juego.AgregarLista();
+        Juego juego = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("juego"));
         string palabra = "";
-        if(color1 == juego.respuestas[0] && color2 == juego.respuestas[1] && color3 == juego.respuestas[2])
-        {
-            juego.Electricidad();
-            ViewBag.hol = juego.TieneElectricidad;
-            palabra = "sala3";
-        }
-        else
+        if (juego == null) 
         {
             palabra="sala2";
         }
-        HttpContext.Session.SetString("hola",Objeto.ObjectToString(juego));
-        return View(palabra);
+        bool pasaSala;
+        if(color1 != null && color2 != null && color3 != null)
+        {
+            pasaSala=juego.validar(color1, color2, color3);
+            if(pasaSala == true)
+            {
+                ViewBag.hol = juego.TieneElectricidad;
+                palabra="sala3";
+            }
+            else
+            {
+                ViewBag.lol = false; 
+                palabra="sala2";
+            }
+        
+        }
+        else{
+            palabra="sala2";
+        }
+        HttpContext.Session.SetString("juego", Objeto.ObjectToString(juego));
+        return View (palabra);
     }
 
     public ActionResult Juego()
@@ -83,48 +95,50 @@ public class HomeController : Controller
 
     public IActionResult Formulario3(string password)
     {
-        Juego juego = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("hola"));
-        while(juego.Completado == false)
+        Juego juego = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("juego"));
+        if (juego == null) 
         {
-            juego.AgregarLista();
+            return RedirectToAction("Index");
+        }
             if(password == juego.respuestas[3])
             {
                 juego.FalsaT();
                 juego.Cambiar();
                 ViewBag.Completa = juego.Completado;
-            }
-        } 
-        HttpContext.Session.SetString("hola",Objeto.ObjectToString(juego));
+            } 
+        HttpContext.Session.SetString("juego",Objeto.ObjectToString(juego));
         return View("sala3");
+
     }
 
     public IActionResult Formulario4(string password)
     {
-        Juego juego = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("hola"));
-        juego.FalsaT();
-        while(juego.Completado == false)
+        Juego juego = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("juego"));
+        if (juego == null)
         {
-        juego.AgregarLista();
-        if(password == juego.respuestas[4])
+            return RedirectToAction("Index");
+        }
+        juego.FalsaT();
+        if (password == juego.respuestas[4])
         {
             juego.FalsaT();
             juego.Cambiar();
             ViewBag.Hecho = juego.Completado;
         }
-        }
+        HttpContext.Session.SetString("juego",Objeto.ObjectToString(juego));
         return View("sala3");
-        HttpContext.Session.SetString("hola",Objeto.ObjectToString(juego));
     }
 
     public IActionResult Formulario5(string password)
     {
-        Juego juego = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("hola"));
+        Juego juego = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("juego"));
+        if (juego == null)
+        {
+            return RedirectToAction("Index");
+        }
         juego.FalsaT();
         string palabra = "";
-        while(juego.Completado == false)
-        {
-        juego.AgregarLista();
-        if(password == juego.respuestas[5])
+        if (password == juego.respuestas[5])
         {
             juego.FalsaT();
             juego.Cambiar();
@@ -134,61 +148,72 @@ public class HomeController : Controller
         {
             palabra = "sala3";
         }
-        }
-        HttpContext.Session.SetString("hola",Objeto.ObjectToString(juego));
+        HttpContext.Session.SetString("juego",Objeto.ObjectToString(juego));
         return View(palabra);
 
     }
 
     public IActionResult Formulario6(string ingrese)
     {
-        Juego juego = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("hola"));
-        juego.AgregarLista();
-        if(ingrese == juego.respuestas[6])
+        Juego juego = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("juego"));
+        if (juego == null)
+        {
+            return RedirectToAction("Index");
+        }
+
+        if (ingrese == juego.respuestas[6])
         {
             juego.code();
             ViewBag.si = juego.codigo;
+            HttpContext.Session.SetString("juego", Objeto.ObjectToString(juego));
             return View("sala5");
         }
         else
         {
-            return View("sala4");
             ViewBag.yay = juego.codigo;
+            HttpContext.Session.SetString("juego",Objeto.ObjectToString(juego));
+            return View("sala4");
         }
-        HttpContext.Session.SetString("hola",Objeto.ObjectToString(juego));
-
     }
 
     public IActionResult Formulario7(string password)
     {
-        Juego juego = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("hola"));
-        juego.AgregarLista();
-        if(password == juego.respuestas[7])
+       Juego juego = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("juego"));
+        if (juego == null)
+        {
+            return RedirectToAction("Index");
+        }
+
+        if (password == juego.respuestas[7])
         {
             juego.FalsaS();
             juego.code();
         }
+        
         ViewBag.hey = juego.codigo;
+        HttpContext.Session.SetString("juego", Objeto.ObjectToString(juego));
         return View("sala5");
-        HttpContext.Session.SetString("hola", Objeto.ObjectToString(juego));
     }
 
     public IActionResult Formulario8(string password)
     {
-        Juego juego = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("hola"));
-        juego.AgregarLista();
-        if(password == juego.respuestas[8])
+       Juego juego = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("juego"));
+        if (juego == null)
+        {
+            return RedirectToAction("Index");
+        }
+
+        if (password == juego.respuestas[8])
         {
             juego.FalsaS();
             juego.code();
-            HttpContext.Session.SetString("hola", Objeto.ObjectToString(juego));
+            HttpContext.Session.SetString("juego", Objeto.ObjectToString(juego));
             return View("sala6");
         }
         else
         {
-            Console.WriteLine("NO");
+            HttpContext.Session.SetString("juego", Objeto.ObjectToString(juego));
             return View("sala5");
         }
-        HttpContext.Session.SetString("hola", Objeto.ObjectToString(juego));
     }
 }
